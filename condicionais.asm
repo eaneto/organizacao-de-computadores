@@ -1,4 +1,4 @@
-.datal
+.data
 a: .word 0,1,2,3,4,5
 b: .word 1
 c: .word 0,1,2,3,4,5
