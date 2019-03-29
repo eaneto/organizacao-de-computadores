@@ -1,0 +1,69 @@
+* Floating point
+
+** Floating point addition
+
+- Shift the smaller number right until exponents match
+- Add/subtract the mantissas, depending o sign
+- Normalise the sum by adjusting exponent
+- Check for overflow
+- round to avaiable bits
+
+** Floating point multiplication
+
+- Add the exponents
+- multiply the mantissas, setting the sign of the product
+- Normalise the product by adjusting exponent
+- Check for overflow
+- round to avaiable bits
+
+** IEEE 754 Rounding
+
+- Hardware needs two extra bits(round, guard) for rounding
+
+- MIPS and Java uses round to even by default
+
+|   Number | To + inf. | To - inf. | To Zero | To Even |
+| +0001.01 |     +0010 |     +0001 |   +0001 |   +0001 |
+| -0001.11 |     -0001 |     -0010 |   -0001 |   -0010 |
+| +0100.10 |     +0101 |     +0100 |   +0100 |   +0100 |
+
+** IEEE 754 for MIPS
+
+- IEEE operations performed by Floating Point Unit (FPU)
+
+ #+BEGIN_SRC assembly
+add.s $f0, $f1, $f2
+ #+END_SRC
+
+** Floating Point I/O
+
+| syscall      | $v0 | Arguments   | Result     |
+| print_float  |   2 | $f12        | none       |
+| print_double |   3 | ($f12,$f13) | none       |
+| read_float   |   6 | none        | $f0        |
+| read_double  |   7 | none        | ($f0, $f1) |
+
+#+BEGIN_SRC assembly
+.data
+pi: .double 3.141592653589793
+
+.text
+.globl main
+
+main:
+li $v0, 7
+syscall
+la $a0, pi
+l.d $f12, 0($a0)
+mul.d $f12, $f12, $f0
+mul.d $f12, $f12, $f0
+li $v0, 3
+syscall
+jr $ra
+#+END_SRC  
+
+** FPU <-> CPU
+
+#+BEGIN_SRC assembly
+mfcl # Store floating point number
+#+END_SRC
