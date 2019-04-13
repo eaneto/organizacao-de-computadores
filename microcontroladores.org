@@ -1,0 +1,83 @@
+* Microcontroladores
+
+** Introdução
+
+*** Diferenças entre microcontroladores e microprocessadores
+
+Microprocessador: Projetado somente para ter algumas funções de execução de instruções.
+Microcontrolador: Tem um microprocessador, e possui outros
+dispositivos integrados (ex.: gerenciador de entrada e saída).
+
+Usar o arduino como um gravador.
+
+** Unidade de memória
+
+Nos microcontroladores a memória tem 2 papéis. Armazenar e em geral os
+primeiros endereços são especiais, pois guardam as configurações do
+microcontrolador.
+
+** Unidade Central de Processamento
+
+No PIC temos um registrador($w).
+
+** Barramentos
+
+Duas entradas:
+- Entrada do dado
+- Entrada do endereço
+
+Configura o endereço, a partir disso, você seleciona o endereço e já
+selecionado grava o dado no endereço.
+
+** I/O
+
+Configurar os pinos como entrada e saída.
+
+** Comunicação Serial
+
+ A partir dele que fazemos as comunicações.
+- Obter leitura de alguns dados
+- Enviar o programa escrito
+
+** Timer
+
+Faz o contagem do tempo.  Oscilador.  Cada instrução leva em torno de
+1 ciclo(Hz) para ser executada.
+
+** Watchdog
+
+Responsável por "destravavr/reset" nosso microcontrolador em caso de
+erro.
+
+** Conversor Analógico - Digital
+
+Responsável por transformar um nível de tensão em um número para que o microcontrolador possa processar a informação.
+
+
+** Configuração física do interioir de um microcontrolador
+
+** Microcontrolador PIC16F84
+
+- O PIC16f84 pertence a uma classe de microcontrolador de 8 bits, com uma arquitetura RISC.
+
+*** Memporia de programa (FLASH)
+
+Para armazenar o programa que escreveu.
+
+*** EEPROM
+
+Memporia dos dados que necessitam de ser salvaguardos quando a alimentação é desligada.
+
+- Normalmente é usada para guardar dados importantes que não se podem perder quando a alimentação, de repende, "vai abaixo".
+
+*** PORT A e PORT B
+
+São ligações físicas entre o microcontrolador e o mundo exterior.
+O port A tem cinco pinos e o port B oito pinos.
+Cada uma delas é configurada como entrada ou saída(7 bits).
+
+*** Contador/Temporizador
+
+É um registro de 8 bits no interior do microcontrolador que trabalha independentemente do programa.
+
+*** Gerador de clock
