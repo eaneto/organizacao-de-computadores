@@ -1,0 +1,164 @@
+* Memória
+
+| Unidade |   CPU | Memória |
+|---------+-------+---------|
+| K       |  10^3 |    2^10 |
+| M       |  10^6 |    2^20 |
+| G       |  10^9 |    2^30 |
+| T       | 10^12 |    2^40 |
+
+** Endereços
+
+Multicore - SMP(MIMD) (Processamento de Memória Simétrico)
+
+SDR - Single Data Rate
+DDR - Double Data Rate
+
+** Características das memórias
+
+*** Localização
+
+- CPU
+Registradores e Cache.
+
+- Interna
+Memória principa.
+
+- Externa
+HD, SSD, Pen Drive, CD, DVD, ...
+
+*** Capacidade
+
+Cada uma das posições de memória é chamada de palavra.
+palavra: menor quantidade enredeçavel de memória.
+bloco: Conjunto de palavras.
+
+bloco de 4kB/ palavra de 1B = 4 * 2^10
+   = 4096 palavras
+
+
+- Tamanho da palavra
+-- A unidade natural da organização
+
+- Número de palavras
+-- ou Bytes
+
+*** Unidade de transferência
+
+CPU(registradores) Transfere palavras para o cache e vice-versa,
+o cache transfere blocos para a memória principal e vice-versa.
+
+*** Método de acesso
+
+- Aleatório
+> Cada unidade enredeçavel possui um mecanismo de enredeçamento único.
+> O tempo de acesso é constante e independente da localização ou do acesso anterior.
+> Ex.: RAM
+
+- Associativo
+> Um dado é localizado baseado em
+> Por que a posição do dado está associada a uma parte.
+> Ex.:
+
+- Sequencial
+> O acesso é feito segundo uma sequência linar específica.
+> O tempo de acesso depende da localização do dado.
+> Ex.: Fitas
+
+- Direto
+> Blocos individuais ou registros têm endereço único
+> Acesso é feito por meio de um direto a uma vizihança do registro e, em seguida, por uma pesquisa sequencial.
+> Tempo de acesso também é variável.
+> Tenho que ter uma referÇencia direta à ele.
+> Ex: Discos
+
+*** Desempenho
+
+- Tempo de acesso (latência)
+> Tempo gasto desde o instante em que o endereço é aprensentado à memória até o momeento em que os dados se tornam disponíveis.
+> Tempo gasto de escrita
+
+- Tempo de ciclo
+> Tempo de acesso + recovey
+> Desaparecimento de transientes
+
+  tav   R
+|-----|---|-----|
+  5ns  1ns  5ns
+    6ns
+
+6ns é o tempo de ciclo.
+
+- Taxa de transferência
+> Taxa na qual os dados podem ser movidos de ou para a memória.
+> é quanto tempo os dados demoram de ir para a CPU da memória pelo barramento.
+
+Cálculo da taxa:
+F = 1 / T
+Tx = 32bits / T
+
+- Tempo médio de acesso
+> QUando desejamos calcular um tempo médio de acesso a 2 ou mais níveis de memória
+> Levamos em conta o tempo de acesso de cada nível e a probabilidade de encontrar ou não o dado em cada nível:
+>   N1 é o nível mais alto e N2 o nível logo abaixo
+> Fórmula:
+ Tempo_Médio = (Tn1 * Pacerto_n1) + (Tn2 * Pfalha_n1)
+
+Tn1 = Tempo de acesso á memória 1
+Tn2 = Tempo de acesso á memória 2
+Pacetor_n1 = Probabilidade de ter o acesso na memória n1
+Pacetor_n2 = Probabilidade de ter o acesso na memória n2
+
+- Exemplo
+> Calcular o tempo médio de acesso entre memória principal e cache, sabendo que:
+>> Tempo acesso MP = 10ns
+>> Tempo acesso Cache = 5ns
+>> probabilidade de acerto (cache) = 40%
+
+Tempo_Médio = (5 * 0.4) + (10 * 0.6)
+Tempo_Médio = 2ns + 6ns
+Tempo_Médio = 8ns
+
+*** Tipo físico
+
+- Semitondutor (RAM)
+Posso usar Flip-Flops(estático) ou capacitores(precisa de refresh).
+
+- Magnético (Disco e Fita)
+Escrita por indução magnética.
+Se colocar um campo magnético muito forte perto pode perder dados.
+
+- Óptico (CD e DVD)
+Consegue ler por reflexão de luz.
+
+*** Características físicas
+
+- Volátil
+Não armazena permanentemente o dado.
+
+- Não-volátil
+HD, SSD, Pen Drive. O dado permanece de modo consistente.
+
+- Apagável
+Cache, RAM, HD, SSD, BIOS, EPROM EEPROM.
+
+- Não-Apagável
+Memórias ROM.
+
+- Consumo de energia
+
+*** Organização
+
+- Princípios de Localidade
+
+> Localidade espacial
+>> Exemplos: laços de repetição
+
+> Localidade temporal
+>> Repetir o acesso de um dado específico.
+
+>> Exemplo: Laços
+#+BEGIN_SRC c
+for (int i = 0;i < N;i++)
+    soma += vet[i];
+#+END_SRC
