@@ -1,0 +1,15 @@
+* PIC
+
+[[microchip.com]]
+
+Vpp = MCLR
+Vdd = 5v
+Vss = GND
+
+Cada instrução leva 4 ciclos do clock(Hz).
+
+1) Para a datasheet dos microcontroladores, responda:
+
+a) Quais são os mnemônios(opcods) para o PIC 16F628 e para o PIC 18F4550
+
+b) Modifique o programa apresentado em sala para ligar todas as portas em sequência.

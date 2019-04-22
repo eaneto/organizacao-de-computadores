@@ -2,10 +2,10 @@
 
 | Unidade |   CPU | Memória |
 |---------+-------+---------|
-| K       |  10^3 |    2^10 |
-| M       |  10^6 |    2^20 |
-| G       |  10^9 |    2^30 |
-| T       | 10^12 |    2^40 |
+| K       |  10³ |    2^10 |
+| M       |  10⁶ |    2^20 |
+| G       |  10⁹ |    2^30 |
+| T       | 10¹² |    2^40 |
 
 ** Endereços
 
@@ -162,3 +162,44 @@ Memórias ROM.
 for (int i = 0;i < N;i++)
     soma += vet[i];
 #+END_SRC
+
+** Correção de Erro
+
+Memórias ECC(Código de Correção de Erro), capazes de detectar erros no armazenamento dos dados.
+
+*** Falhas Graves
+*** Erros Moderados
+*** Detectando usando código de correção de Erros de Hamming
+*** Função de Correção de Erros
+*** Numero de bits do Código
+
+2^k - 1 >= M + K
+M é o tamanho da palavra
+K é o npumero de bits do código
+
+|         |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------+----+----+----+----+----+----+----+----+----+----+----+----|
+| 2⁰      |  0 |  0 |  0 |  0 |  0 |  0 |  0 |  1 |  1 |  1 |  1 |  1 |
+| 2¹      |  0 |  0 |  0 |  1 |  1 |  1 |  1 |  0 |  0 |  0 |  0 |  1 |
+| 2²      |  0 |  1 |  1 |  0 |  0 |  1 |  1 |  0 |  0 |  1 |  1 |  1 |
+| 2³      |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  1 |
+|         | K1 | K2 | M1 | K3 | M2 | M3 | M4 | K4 | M5 | M6 | M7 | M8 |
+| M       |  0 |  1 |  0 |  0 |  1 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |
+| Memória |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  1 |  0 |  0 |  1 | 0  |
+
+
++ = xor
+M = 00001010
+|   | K1 = | M1 + M2 + M4 + M5 + M7 | 0 |  1 |
+|   | K2 = | M1 + M3 + M4 + M6 + M7 | 1 |  1 |
+| F | K3 = | M2 + M3 + M4 + M8      | 0 |  0 |
+|   | K4 = | M5 + M6 + M7 + M8      | 0 |  1 |
+|   |      |                        | K | K' |
+
+End a = 000101010010
+
+K        = 0010
+K'       = 1011
+K XOR K' = 1001 (Erro)
+           (O valor mostra o bit onde está erro)
+
