@@ -59,20 +59,23 @@ cache transfere blocos para a memória principal e vice-versa.
 - associada a uma parte.  Ex.:
 
 **** Sequencial
-- O acesso é feito segundo uma sequência linar específica.  O tempo de
-- acesso depende da localização do dado.  Ex.: Fitas
+1. O acesso é feito segundo uma sequência linar específica.
+2. O tempo de acesso depende da localização do dado.
+3. Ex.: Fitas
 
 **** Direto
-- Blocos individuais ou registros têm endereço único Acesso é feito
-- por meio de um direto a uma vizihança do registro e, em seguida, por
-- uma pesquisa sequencial.  Tempo de acesso também é variável.  Tenho
-- que ter uma referÇencia direta à ele.  Ex: Discos
+1. Blocos individuais ou registros têm endereço único
+2. Acesso é feito por meio de um direto a uma vizihança do registro e,
+   em seguida, por uma pesquisa sequencial.
+3. Tempo de acesso também é variável.
+4. Tenho que ter uma referência direta à ele.
+5. Ex: Discos
 
 *** Desempenho
 
 **** Tempo de acesso (latência)
 - Tempo gasto desde o instante em que o endereço é aprensentado à
-- memória até o momeento em que os dados se tornam disponíveis.  Tempo
+- memória até o momento em que os dados se tornam disponíveis.  Tempo
 - gasto de escrita
 
 **** Tempo de ciclo
@@ -148,7 +151,8 @@ Memórias ROM.
 
 ***** Exemplo: Laços
 #+BEGIN_SRC c
-for (int i = 0;i < N;i++) soma += vet[i];
+for (int i = 0;i < N;i++)
+    soma += vet[i];
 #+END_SRC
 
 ** Correção de Erro
@@ -174,7 +178,6 @@ código
 |         | K1 | K2 | M1 | K3 | M2 | M3 | M4 | K4 | M5 | M6 | M7 | M8 |
 | M       |  0 |  1 |  0 |  0 |  1 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |
 | Memória |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  1 |  0 |  0 |  1 | 0  |
-
 
 + = xor
 M = 00001010
