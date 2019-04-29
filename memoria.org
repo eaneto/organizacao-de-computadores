@@ -4,8 +4,8 @@
 |---------+------+---------|
 | K       | 10³  | 2¹⁰     |
 | M       | 10⁶  | 2²⁰     |
-| G       | 10⁹  | 2^³⁰    |
-| T       | 10¹² | 2^⁴⁰    |
+| G       | 10⁹  | 2³⁰    |
+| T       | 10¹² | 2⁴⁰    |
 
 ** Endereços
 
@@ -22,7 +22,7 @@ DDR - Double Data Rate
 Registradores e Cache.
 
 - Interna
-Memória principa.
+Memória principal.
 
 - Externa
 HD, SSD, Pen Drive, CD, DVD, ...
@@ -33,90 +33,81 @@ Cada uma das posições de memória é chamada de palavra.
 palavra: menor quantidade enredeçavel de memória.
 bloco: Conjunto de palavras.
 
-bloco de 4kB/ palavra de 1B = 4 * 2^10
+bloco de 4kB / palavra de 1B = 4 * 2¹⁰
    = 4096 palavras
 
-
 - Tamanho da palavra
--- A unidade natural da organização
+-* A unidade natural da organização
 
 - Número de palavras
--- ou Bytes
+-* ou Bytes
 
 *** Unidade de transferência
 
-CPU(registradores) Transfere palavras para o cache e vice-versa,
-o cache transfere blocos para a memória principal e vice-versa.
+CPU(registradores) transfere palavras para o cache e vice-versa, o
+cache transfere blocos para a memória principal e vice-versa.
 
 *** Método de acesso
 
 - Aleatório
-> Cada unidade enredeçavel possui um mecanismo de enredeçamento único.
-> O tempo de acesso é constante e independente da localização ou do acesso anterior.
-> Ex.: RAM
++ Cada unidade enredeçavel possui um mecanismo de enredeçamento único.
++ O tempo de acesso é constante e independente da localização ou do
++ acesso anterior.  Ex.: RAM
 
 - Associativo
-> Um dado é localizado baseado em
-> Por que a posição do dado está associada a uma parte.
-> Ex.:
++ Um dado é localizado baseado em Por que a posição do dado está
++ associada a uma parte.  Ex.:
 
 - Sequencial
-> O acesso é feito segundo uma sequência linar específica.
-> O tempo de acesso depende da localização do dado.
-> Ex.: Fitas
++ O acesso é feito segundo uma sequência linar específica.  O tempo de
++ acesso depende da localização do dado.  Ex.: Fitas
 
 - Direto
-> Blocos individuais ou registros têm endereço único
-> Acesso é feito por meio de um direto a uma vizihança do registro e, em seguida, por uma pesquisa sequencial.
-> Tempo de acesso também é variável.
-> Tenho que ter uma referÇencia direta à ele.
-> Ex: Discos
++ Blocos individuais ou registros têm endereço único Acesso é feito
++ por meio de um direto a uma vizihança do registro e, em seguida, por
++ uma pesquisa sequencial.  Tempo de acesso também é variável.  Tenho
++ que ter uma referÇencia direta à ele.  Ex: Discos
 
 *** Desempenho
 
 - Tempo de acesso (latência)
-> Tempo gasto desde o instante em que o endereço é aprensentado à memória até o momeento em que os dados se tornam disponíveis.
-> Tempo gasto de escrita
+> Tempo gasto desde o instante em que o endereço é aprensentado à
+> memória até o momeento em que os dados se tornam disponíveis.  Tempo
+> gasto de escrita
 
 - Tempo de ciclo
-> Tempo de acesso + recovey
-> Desaparecimento de transientes
+> Tempo de acesso + recovey Desaparecimento de transientes
 
-  tav   R
+  tav R
 |-----|---|-----|
-  5ns  1ns  5ns
-    6ns
+  5ns 1ns 5ns 6ns
 
 6ns é o tempo de ciclo.
 
 - Taxa de transferência
-> Taxa na qual os dados podem ser movidos de ou para a memória.
-> é quanto tempo os dados demoram de ir para a CPU da memória pelo barramento.
+> Taxa na qual os dados podem ser movidos de ou para a memória.  é
+> quanto tempo os dados demoram de ir para a CPU da memória pelo
+> barramento.
 
-Cálculo da taxa:
-F = 1 / T
-Tx = 32bits / T
+Cálculo da taxa: F = 1 / T Tx = 32bits / T
 
 - Tempo médio de acesso
-> QUando desejamos calcular um tempo médio de acesso a 2 ou mais níveis de memória
-> Levamos em conta o tempo de acesso de cada nível e a probabilidade de encontrar ou não o dado em cada nível:
->   N1 é o nível mais alto e N2 o nível logo abaixo
-> Fórmula:
- Tempo_Médio = (Tn1 * Pacerto_n1) + (Tn2 * Pfalha_n1)
+> QUando desejamos calcular um tempo médio de acesso a 2 ou mais
+> níveis de memória Levamos em conta o tempo de acesso de cada nível e
+> a probabilidade de encontrar ou não o dado em cada nível: N1 é o
+> nível mais alto e N2 o nível logo abaixo Fórmula: Tempo_Médio =
+> (Tn1 * Pacerto_n1) + (Tn2 * Pfalha_n1)
 
-Tn1 = Tempo de acesso á memória 1
-Tn2 = Tempo de acesso á memória 2
-Pacetor_n1 = Probabilidade de ter o acesso na memória n1
-Pacetor_n2 = Probabilidade de ter o acesso na memória n2
+Tn1 = Tempo de acesso á memória 1 Tn2 = Tempo de acesso á memória 2
+Pacetor_n1 = Probabilidade de ter o acesso na memória n1 Pacetor_n2 =
+Probabilidade de ter o acesso na memória n2
 
 - Exemplo
-> Calcular o tempo médio de acesso entre memória principal e cache, sabendo que:
->> Tempo acesso MP = 10ns
->> Tempo acesso Cache = 5ns
->> probabilidade de acerto (cache) = 40%
+> Calcular o tempo médio de acesso entre memória principal e cache,
+>sabendo que: > Tempo acesso MP = 10ns > Tempo acesso Cache = 5ns >
+>probabilidade de acerto (cache) = 40%
 
-Tempo_Médio = (5 * 0.4) + (10 * 0.6)
-Tempo_Médio = 2ns + 6ns
+Tempo_Médio = (5 * 0.4) + (10 * 0.6) Tempo_Médio = 2ns + 6ns
 Tempo_Médio = 8ns
 
 *** Tipo físico
@@ -125,8 +116,8 @@ Tempo_Médio = 8ns
 Posso usar Flip-Flops(estático) ou capacitores(precisa de refresh).
 
 - Magnético (Disco e Fita)
-Escrita por indução magnética.
-Se colocar um campo magnético muito forte perto pode perder dados.
+Escrita por indução magnética.  Se colocar um campo magnético muito
+forte perto pode perder dados.
 
 - Óptico (CD e DVD)
 Consegue ler por reflexão de luz.
@@ -151,21 +142,19 @@ Memórias ROM.
 
 - Princípios de Localidade
 
-> Localidade espacial
->> Exemplos: laços de repetição
+> Localidade espacial > Exemplos: laços de repetição
 
-> Localidade temporal
->> Repetir o acesso de um dado específico.
+> Localidade temporal > Repetir o acesso de um dado específico.
 
 >> Exemplo: Laços
 #+BEGIN_SRC c
-for (int i = 0;i < N;i++)
-    soma += vet[i];
+for (int i = 0;i < N;i++) soma += vet[i];
 #+END_SRC
 
 ** Correção de Erro
 
-Memórias ECC(Código de Correção de Erro), capazes de detectar erros no armazenamento dos dados.
+Memórias ECC(Código de Correção de Erro), capazes de detectar erros no
+armazenamento dos dados.
 
 *** Falhas Graves
 *** Erros Moderados
@@ -173,9 +162,8 @@ Memórias ECC(Código de Correção de Erro), capazes de detectar erros no armaz
 *** Função de Correção de Erros
 *** Numero de bits do Código
 
-2^k - 1 >= M + K
-M é o tamanho da palavra
-K é o npumero de bits do código
+2^k - 1 >= M + K M é o tamanho da palavra K é o npumero de bits do
+código
 
 |         |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
 |---------+----+----+----+----+----+----+----+----+----+----+----+----|
@@ -198,8 +186,6 @@ M = 00001010
 
 End a = 000101010010
 
-K        = 0010
-K'       = 1011
-K XOR K' = 1001 (Erro)
-           (O valor mostra o bit onde está erro)
+K = 0010 K' = 1011 K XOR K' = 1001 (Erro) (O valor mostra o bit onde
+está erro)
 
