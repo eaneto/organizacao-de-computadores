@@ -55,21 +55,22 @@ cache transfere blocos para a memória principal e vice-versa.
 - acesso anterior.  Ex.: RAM
 
 **** Associativo
-- Um dado é localizado baseado em Por que a posição do dado está
+- Um dado é localizado baseado em parte de seu conteúdo
+- Por que a posição do dado está
 - associada a uma parte.  Ex.:
 
 **** Sequencial
-1. O acesso é feito segundo uma sequência linar específica.
-2. O tempo de acesso depende da localização do dado.
-3. Ex.: Fitas
+- O acesso é feito segundo uma sequência linar específica.
+- O tempo de acesso depende da localização do dado.
+- Ex.: Fitas
 
 **** Direto
-1. Blocos individuais ou registros têm endereço único
-2. Acesso é feito por meio de um direto a uma vizihança do registro e,
-   em seguida, por uma pesquisa sequencial.
-3. Tempo de acesso também é variável.
-4. Tenho que ter uma referência direta à ele.
-5. Ex: Discos
+- Blocos individuais ou registros têm endereço único
+- Acesso é feito por meio de um direto a uma vizihança do registro e,
+  em seguida, por uma pesquisa sequencial.
+- Tempo de acesso também é variável.
+- Tenho que ter uma referência direta à ele.
+- Ex: Discos
 
 *** Desempenho
 
@@ -189,6 +190,7 @@ M = 00001010
 
 End a = 000101010010
 
-K = 0010 K' = 1011 K XOR K' = 1001 (Erro) (O valor mostra o bit onde
-está erro)
+K = 0010
+K' = 1011
+K XOR K' = 1001 (Erro) (O valor mostra o bit onde está erro)
 
