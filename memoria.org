@@ -178,7 +178,7 @@ código
 | 2³      |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  0 |  1 |  1 |
 |         | K1 | K2 | M1 | K3 | M2 | M3 | M4 | K4 | M5 | M6 | M7 | M8 |
 | M       |  0 |  1 |  0 |  0 |  1 |  0 |  1 |  0 |  0 |  0 |  0 |  0 |
-| Memória |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  1 |  0 |  0 |  1 | 0  |
+| Memória |  0 |  0 |  0 |  0 |  0 |  1 |  0 |  1 |  0 |  0 |  1 |  0 |
 
 + = xor
 M = 00001010
@@ -194,3 +194,41 @@ K = 0010
 K' = 1011
 K XOR K' = 1001 (Erro) (O valor mostra o bit onde está erro)
 
+** Cache
+
+*** Organização
+
+Bloco é a unidade de transferência.
+A linha do cache tem exatamente o tamanho de um bloco.
+
+*** Gerência dos dados
+
+**** Algoritmos de mapeamento
+
+***** Mapeamento direto
+
+Cada bloco só pode ser carregado em uma linha exclusiva do cache.
+
+***** Mapeamento Associativo
+
+****** FIFO
+
+****** LRU - Least Recently used
+
+****** LFU - Least-frequently used
+
+***** Mapeamento Associativo por Conjunto
+
+- Divide o cache em blocos chamados de conjuntos
+
+**** Algoritmos de substituição
+
+***** Write Through
+
+- Consistente
+- Desempenho fraco (pois acessa a memória sempre)
+
+***** Write back
+
+- Não consistente
+- Desempenho melhor que o write through

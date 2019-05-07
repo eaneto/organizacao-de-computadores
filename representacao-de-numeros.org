@@ -1,0 +1,28 @@
+* Representação de Números
+
+- Sinal e Magnitude     }
+                        }  Inteiros
+- Complemento de Dois   }
+
+- Representação em Ponto Fluturande - IEEE 754
+  - Padrão criado em 1985 pela IEEE.
+  - Passou a ser adotado por todos os computadores.
+
+** Sinal e Magnitude
+
+*** Representação para números inteiros positivos e negatios
+
+Foi usada por computadores antigos.
+
+*** Os números são organizados.
+
+*** Exemplo usadno 8 bits:
+
+-37 = -100101
+
+Sinal Magnitude
+1     0100101
+
+** Complemento de Dois
+
+** IEEE 754
