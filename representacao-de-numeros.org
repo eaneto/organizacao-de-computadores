@@ -26,3 +26,41 @@ Sinal Magnitude
 ** Complemento de Dois
 
 ** IEEE 754
+
+- IEEE 754 definido em 1985
+- 2 representação posspiveis:
+  - Float (32 bits)
+  - Double (64 bits)
+
+*** Notação
+
+| S | Exponent        | Fraction        |
+|   | single: 8 bits  | single: 23 bits |
+|   | double: 11 bits | double: 52 bits |
+
+X = (-1)^s * (1+Fraction)*2^(exponent+Bias)
+
+S: sign bit(0 => non negative,
+            1 => negative)
+
+*** Ponto Flutuante
+
+- Os números devem ser representados na forma normalizada (, alguma
+  coisa):
+
+#+BEGIN_SRC 
++-1,.......
+#+END_SRC
+
+- Parte inteira do número sempre igual a 1
+
+**** Exemplo
+
+***** 130,75 = ? Binário
+
+#+BEGIN_SRC 
+1  0  0  0  0  0  1  0,  1  1
+2⁷ 2⁶ 2⁵ 2⁴ 2³ 2² 2¹ 2⁰ 2⁻¹ 2⁻²
+
+1,000001011 * 2⁷
+#+END_SRC
