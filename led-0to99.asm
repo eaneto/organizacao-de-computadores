@@ -67,22 +67,27 @@ SEVENSEG2
 
 SEGUNDOBIT
     MOVF TEMP2, W       ; W=TEMP2
-    CALL SEVENSEG2      ; Find the number to be sent to 7 Segment
+    CALL SEVENSEG2      ; Find the number to be sent to 7 Segment 2
+
     MOVWF PORTB         ; Send this number to PORTB (data pins)
     BCF PORTB, 4
     CALL DELAY          ; Wait for 0.2 seconds
+
     MOVLW 0X0A          ; Compare this number with 10
     XORWF TEMP, 0
     BTFSC STATUS, Z
     INCF TEMP2, 1       ; Increment the number to be displayed
+
     MOVLW 0X0A          ; Compare this number with 10
     XORWF TEMP2, 0
     BTFSC STATUS, Z
-    CLRF TEMP2
+    CLRF TEMP2          ; Limpa o valor do contador se for 10
+
     MOVLW 0X0A          ; Compare this number with 10
     XORWF TEMP, 0
     BTFSC STATUS, Z
-    CLRF TEMP           ; If TEMP becomes 10, clear it and continue displaying
+    CLRF TEMP           ; Limpa o valor do contador se for 10
+
     RETURN
 
 ; Delay routine, approximately 0.2 seconds
@@ -96,7 +101,7 @@ DELAY
             DECFSZ COUNTER1, F
             GOTO LOOP1
         DECFSZ COUNTER2, F
-    GOTO LOOP2
-RETURN
+        GOTO LOOP2
+    RETURN
 
 END
