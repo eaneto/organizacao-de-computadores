@@ -10,8 +10,8 @@ ORG 0x00
 ; Declarações das variáveis
 COUNTER1 EQU 0X20       ; Used in DELAY routine
 COUNTER2 EQU 0X21       ; Used in DELAY routine
-TEMP EQU 0X22           ; Used to hold the last number displayed on 7segment 1
-TEMP2 EQU 0X23          ; Used to hold the last number displayed on 7segment 2
+TEMP EQU 0X22           ; O número que vai ser escrito no primeiro display
+TEMP2 EQU 0X23          ; O número que vai ser escrito no segundo display
 
 ; PORT settings
 BANKSEL TRISA           ; Select BANK 1
@@ -27,16 +27,16 @@ BSF PORTA, 0            ; Enable 7 Segment
 
 ; Display on 7 Segment
 INCREMENT
-    MOVF TEMP, W        ; W=TEMP
-    CALL SEVENSEG       ; Find the number to be sent to 7 Segment
+    MOVF TEMP, W        ; W = TEMP
+    CALL SEVENSEG       ; Pega o número pra ser enviado ao primeiro display.
     MOVWF PORTB         ; Send this number to PORTB (data pins)
     BSF PORTB, 4
-    CALL DELAY          ; Wait for 0.2 seconds
-    INCF TEMP, 1        ; Increment the number to be displayed
+    CALL DELAY          ; Delay
+    INCF TEMP, 1        ; Incrementa o número
     CALL SEGUNDOBIT
-    GOTO INCREMENT      ; If TEMP<10, continue displaying
+    GOTO INCREMENT
 
-; Routine finding the number to be sent to 7 segment
+; Seta os bits para o primeiro display.
 SEVENSEG
     addwf PCL, F
     retlw B'11101110'   ; 0
@@ -51,7 +51,7 @@ SEVENSEG
     retlw B'01101111'   ; 9
     retlw B'00000000'   ; apagado
 
-; Routine finding the number to be sent to 7 segment
+; Seta os bits para o segundo display.
 SEVENSEG2
     addwf PCL, F
     retlw B'11111110'   ; 0
@@ -66,31 +66,31 @@ SEVENSEG2
     retlw B'01111111'   ; 9
 
 SEGUNDOBIT
-    MOVF TEMP2, W       ; W=TEMP2
-    CALL SEVENSEG2      ; Find the number to be sent to 7 Segment 2
+    MOVF TEMP2, W       ; W = TEMP2
+    CALL SEVENSEG2      ; Pega o número pra ser enviado ao segundo display.
 
     MOVWF PORTB         ; Send this number to PORTB (data pins)
     BCF PORTB, 4
-    CALL DELAY          ; Wait for 0.2 seconds
+    CALL DELAY          ; Delay
 
-    MOVLW 0X0A          ; Compare this number with 10
+    MOVLW 0X0A          ; Compara o número com 10
     XORWF TEMP, 0
     BTFSC STATUS, Z
     INCF TEMP2, 1       ; Increment the number to be displayed
 
-    MOVLW 0X0A          ; Compare this number with 10
+    MOVLW 0X0A          ; Compara o número com 10
     XORWF TEMP2, 0
     BTFSC STATUS, Z
     CLRF TEMP2          ; Limpa o valor do contador se for 10
 
-    MOVLW 0X0A          ; Compare this number with 10
+    MOVLW 0X0A          ; Compara o número com 10
     XORWF TEMP, 0
     BTFSC STATUS, Z
     CLRF TEMP           ; Limpa o valor do contador se for 10
 
     RETURN
 
-; Delay routine, approximately 0.2 seconds
+; Delay
 DELAY
     MOVLW 0X66
     MOVWF COUNTER2
