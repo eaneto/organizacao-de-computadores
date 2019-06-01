@@ -52,3 +52,32 @@ isso não quer dizer que ela seja boa somente para isso. Atualmente os
 microcontroladores são por diversas vezes mais potentes do que muitos
 computadores utilizados nas décadas de 70 e 80. O Linux, FreeBSD,
 NetBSD e FreeRTOS já foram portados para vários processadores RISC.
+
+** Arquitetura x Organização
+
+*** Arquitetura
+
+São os atributos "visíveis" de uma plataforma ao desenvolvedor.
+
+- Conjunto de instruções
+- Número de bits usados para representação de dados
+- Mecanismos de E/S
+- Técnicas de endereçamento
+
+**** Exemplo
+
+Existe uma instrução de multiplicação e divisão: MULT e DIV.
+
+*** Organização
+
+É como os recursos são implementados.
+
+- Sinais de controler
+- Interfaces
+- Tecnologia de memória
+
+**** Exemplo
+
+Não existe uma instrução de multiplicação e divisão no processador. Já
+que o processador faz somas (os procesadores atuais fazem também
+shifting e usam tabelas para operações mais complexas).
