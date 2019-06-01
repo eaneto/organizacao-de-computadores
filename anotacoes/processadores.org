@@ -1,0 +1,12 @@
+* Processadores
+
+** O que é um processador
+
+A CPU (Central Process Unit), é o componente responsável por executar
+intruções e manipular.  Toda a comunicação entre o processador e os
+demais componentes da arquitetura ocorre através da placa mãe por meio
+de barramentos.
+
+** Detalhes da arquitetura da CPU
+
+[[./CPU.png]]
