@@ -1,0 +1,54 @@
+* Introdução
+
+** Arquiteturas
+
+*** Von Neumann
+
+Na arquitetura de Von Neumann temos uma única memória que é utilizada
+para armazenar as intruções e os dados. Essa memória é ligada em um
+barramento diretamente com a CPU.
+
+- Usada nos processadores que utilizamos em nossos computadores.
+- CISC
+
+*** Harvard
+
+Na arquitetura de Harvard temos duas memórias independentes, uma para
+armazenar os dados e outra para armazenarmos as intruções. Cada
+memória tem uma barramento único para enviar as instruções/dados para
+a CPU.  Nesta arquitetura o acesso aos dados e as instruções ocorre de
+modo simultâneo, obtendo um desempenho melhor que a arquitetura de Von
+Neumann. Por esse motivo esta arquitetura é muito utilizada em
+microcontroladores para dispositivos embarcados.
+
+- Usada nos microcontroladores PIC, MIPS R, entre outros.
+- RISC
+
+*** CISV vs RISC
+
+**** CISC (Complex Instruction Set Computer)
+
+É uma linha de arquitetura de processadores capaz de executar centenas
+de instruções complexas e diferentes. Seu uso é muito versátil.
+
+Arquitetura x86 na Intel e AMD é um exemplo de arquitetura CISC.
+
+Características:
+- São processadores com um conjunto bem grande de instruções.
+- Tem muitos registradores.
+- Pipeline com vários estágios.
+
+**** RISC (Reduced Instruction Set Computer)
+
+É uma linha de arquitetura de processadores capaz de executar um
+número limitado de instruções. Esta arquitetura é muito utilizada em
+microcontroladores para dispositivos embarcados, já que nesses tipos
+de dispositivos não há necessidade de muita complexidade.
+
+Arquiteturas como MIPS, SPARC, RISC-V, ARM são exemplos de arquiteturas RISC.
+
+Por mais que a arquitetura RISC seja muito utilizada em embarcados
+isso não quer dizer que ela seja boa somente para isso. Atualmente os
+microcontroladores são por diversas vezes mais potentes do que muitos
+computadores utilizados nas décadas de 70 e 80. O Linux, FreeBSD,
+NetBSD e FreeRTOS já foram portados para vários processadores RISC.
