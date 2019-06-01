@@ -81,3 +81,24 @@ Existe uma instrução de multiplicação e divisão: MULT e DIV.
 Não existe uma instrução de multiplicação e divisão no processador. Já
 que o processador faz somas (os procesadores atuais fazem também
 shifting e usam tabelas para operações mais complexas).
+
+** Estrutura x Função
+
+*** Estrutura
+
+É o modo como os componente da arquitetura são inter-relacionados e
+como eles interagem com o meio externo.
+
+*** Função
+
+É o papel individual de cada componente como parte da estrutura.
+
+- CPU: Executar instruções
+- Memória: armazenar dados e instruções
+- Controladores de E/S: gerenciar operações de E/S e dispositivos
+
+**** Funções básicas de um computador
+
+- Processamento de dados
+- Armazenamento de dados
+- Movimentação de daods
