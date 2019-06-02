@@ -165,4 +165,24 @@ Considerando 1 clock por estágio, podemos considerar que para
 "preencher" o pipeline, i.e., ter uma instrução sendo executada em
 cada estágio, levaria 14 clocks, e apartir disso 1 clock por estágio.
 
+TODO
+14 clocks
 1000 + 13 = 1013
+
+** Processadores multicore
+
+TODO
+
+** Clock Interno
+
+TODO
+
+** FSB
+
+TODO
+** Arquitetura da CPU
+
+TODO
+** Classificação da Arquitetura
+
+TODO
