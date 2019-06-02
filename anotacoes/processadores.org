@@ -10,3 +10,49 @@ de barramentos.
 ** Detalhes da arquitetura da CPU
 
 [[./CPU.png]]
+
+** Processo de execução de uma instrução
+
+- Buscar instruções em memória
+- Interpretar as instruções
+- Obter os dados (operandos)
+- Processar os dados
+- Salvar o resultado
+
+*** UC
+
+A UC (Unidade de controle) é a unidade responsável por fazer o
+controle interno da execução das instruções na CPU. Ela gerencia as
+instruções que chegam pelo barramento de instruções. Essas instruções
+vem da memória de acordo com o endereço enviado pela UC para a
+controladora de memória, através do barramento de endereço de
+instruções.
+
+A UC *NÃO* executa as instruções. Ela as lê, decodifica e passa os
+comandos para a UCD (Unidade de Ciclo de Dados) determinando como as
+intruções devem ser executadas e com quais dados.
+
+*** UCD
+
+Baseada nos comandos recebidos da UC, a UCD consegue ir buscar os
+dados necessário na memória, tratá-los e enviar o resultado de volta
+para a memória para ser armazenado. Essas ações são controladas pelos
+comandos internos da UC.
+
+*** ULA
+
+A ULA (Unidade Lógica e Aritmética) é um componente interno da CPU que
+realiza as operações aritméticas.
+
+**** Exemplo de uma soma
+
+#+BEGIN_SRC
+  1010
++ 0111
+------
+ 10001
+#+END_SRC
+
+Os operandos e a operação são passados como paramêtro. Se o opcode da
+soma fosse 00 por exemplo, seriam passados como entrada para a ULA
+1010, 0111 e 00. E a ula nos retorna o resultado e o bit de carry.
