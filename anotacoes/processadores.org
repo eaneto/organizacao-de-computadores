@@ -42,7 +42,7 @@ comandos internos da UC.
 *** ULA
 
 A ULA (Unidade Lógica e Aritmética) é um componente interno da CPU que
-realiza as operações aritméticas.
+realiza as operações lógicas e aritméticas.
 
 **** Exemplo de uma soma
 
@@ -55,4 +55,62 @@ realiza as operações aritméticas.
 
 Os operandos e a operação são passados como paramêtro. Se o opcode da
 soma fosse 00 por exemplo, seriam passados como entrada para a ULA
-1010, 0111 e 00. E a ula nos retorna o resultado e o bit de carry.
+1010, 0111 e 00. E a ULA nos retorna o resultado e o bit de carry. O
+resultado é passado também para um registrador escolhido pela UC,
+baseando-se na instrução em execução.
+
+*** Registradores
+
+Os registradores são memórias elaboradas com o mínimo de transistores
+possível, utilizando os melhores componentes. Eles são as memórias
+mais rápidas que podem see construídas e estão no alto nível de
+hierarquia de memória, por conta disso são também as memórias mais
+caras.
+
+[[https://software.intel.com/en-us/articles/intel-sdm][Manual da arquitetura dos processadores Intel 64 e 32 bits]]
+
+Os registradores podem ser divididos em dois grupos
+- Registradores de propósito geral
+- Registradores de propósito específico
+
+**** Registradores de Propósito Específico
+
+***** PC (Program Counter)
+
+É o contador de programas, ele armazena o endereço de memória a
+*próxima* instrução. A CPU envia, antes de executar a instrução, o
+conteúdo do PC para a controladora através do barramento de
+endereço. Este conteúdo é o endereço de memória da próxima instrução.
+
+***** IR (Instruction Register)
+
+É o registrador de instrução, ele armazena o endereço da intrução
+*atual*. O IR recebe a instrução pelo barramento de dados, armazena, e
+a disponibiliza para a UC.
+
+***** MAR (Memory Adress Register)
+
+É o registrador de endereços.
+
+***** MBR (Memory Buffer Register)
+
+É o registrador de dados.
+
+**** Registradores de Propósito Geral
+
+Esses registradores são utilizados para guardar as variáveis dos
+programas. Eles podem ser usados para dados ou endereçamento. Já que
+eles são muito escassos, são poucas as variáveis que ficam armazenadas
+nos registradores.
+
+A vantagem de armazenar algumas variáveis nos registradores, é que
+quando a CPU for executar uma instrução que depende desse dados, ela
+não precisa ir até a memória princiapal para pegá-lo, fazendo a
+execução da instrução muito mais rápida. E é por esse motivo que a CPU
+tenta manter as variáveis mais usadas nos registradores (e no cache).
+
+**** Registrador de Flag
+
+É um registrador usado para armazenar status da CPU.
+
+[[https://en.wikipedia.org/wiki/Status_register][Status Register]]
