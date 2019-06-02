@@ -138,3 +138,31 @@ tenta manter as variáveis mais usadas nos registradores (e no cache).
 Pipelining é uma técnica implementada em hardware para dividir uma
 instrução em vários estágios, com o objetivo de melhorar o desempenho
 do processamento explorando o paralelismo dos estágios.
+
+Cada estágio é executado por um componente específico e independente
+da CPU, i.e.: no mesmo instante é possível ter diferentes estágios de
+diferentes instruções sendo realizadas em paralelo.
+
+Um pipeline com 5 estágios pode ser dividido da seguinte forma:
+- Buscar intrução
+- Decodificar instrução
+- Executar instrução
+- Salvar em meória
+- Armazenar o resultado nos registradores
+
+[[./Pipeline.png]]
+
+*** Exercício
+
+Usando como referência o seguinte pipeline, quantos ciclos de CPU
+serão gastos para executar um programa com 1000 instruções, sabendo
+que não há nenhum tipo de dependência entre elas?  Em segundos, quanto
+isso representa?
+
+[[./Pipeline_exercicio.png]]
+
+
+\begin{equation}
+1000 + 5 = 1005
+\end{equation}
+
