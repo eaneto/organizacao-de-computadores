@@ -9,7 +9,7 @@ de barramentos.
 
 ** Detalhes da arquitetura da CPU
 
-[[./CPU.png]]
+[[./img/CPU.png]]
 
 ** Processo de execução de uma instrução
 
@@ -150,19 +150,19 @@ Um pipeline com 5 estágios pode ser dividido da seguinte forma:
 - Salvar em meória
 - Armazenar o resultado nos registradores
 
-[[./Pipeline.png]]
+[[./img/Pipeline.png]]
+
+Esta divisão, é a divisão clássica da [[https://en.wikipedia.org/wiki/Classic_RISC_pipeline][pipeline RISC]].
 
 *** Exercício
 
-Usando como referência o seguinte pipeline, quantos ciclos de CPU
-serão gastos para executar um programa com 1000 instruções, sabendo
-que não há nenhum tipo de dependência entre elas?  Em segundos, quanto
-isso representa?
+Usando como referência um pipeline de 14 estágios, quantos ciclos de
+CPU serão gastos para executar um programa com 1000 instruções,
+sabendo que não há nenhum tipo de dependência entre elas?  Em
+segundos, quanto isso representa?
 
-[[./Pipeline_exercicio.png]]
+Considerando 1 clock por estágio, podemos considerar que para
+"preencher" o pipeline, i.e., ter uma instrução sendo executada em
+cada estágio, levaria 14 clocks, e apartir disso 1 clock por estágio.
 
-
-\begin{equation}
-1000 + 5 = 1005
-\end{equation}
-
+1000 + 13 = 1013
