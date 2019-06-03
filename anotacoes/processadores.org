@@ -180,9 +180,11 @@ TODO
 ** FSB
 
 TODO
+
 ** Arquitetura da CPU
 
 TODO
+
 ** Classificação da Arquitetura
 
 TODO
